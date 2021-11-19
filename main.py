@@ -12,7 +12,7 @@ def crear_tablas():
         CREATE TABLE IF NOT EXISTS inventario(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             articulo TEXT NOT NULL,
-            cantidad INTEGER
+            cantidad INTEGER NOT NULL
         );
         """
     ]
@@ -94,7 +94,7 @@ def eliminar_articulo(articulo):
 def obtener_articulos():
     conexion = obtener_conexion()
     cursor = conexion.cursor()
-    consulta = "SELECT articulo AND cantidad FROM inventario"
+    consulta = "SELECT articulo, cantidad FROM inventario"
     cursor.execute(consulta)
     return cursor.fetchall()
 
